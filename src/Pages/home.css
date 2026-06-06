@@ -1,0 +1,46 @@
+.drag-drop{
+    width: 100%;
+    max-width: 500px;
+    min-height: 150px;
+    border: 2px dashed #ccc;
+    text-align: center;
+    padding: 30px;
+    border-radius: 15px;
+}
+.preview{
+    width: 100%;
+    max-width: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.banner{
+    width: 100%;
+    max-width: 500px;
+    min-height: 80px;
+    object-fit: cover;
+}
+.file{
+display:none ;
+}
+.file_upload{
+padding: 40px;
+ display: flex;
+justify-content: center;
+}
+.footer{
+ display: flex;  
+ background-color: darksalmon; 
+ justify-content: space-around;
+font-size: large;
+font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+font-weight: 15px;
+padding: 15px;
+border-radius: 20px;
+}
+.nav-link{
+color: black;
+}
+.coverpage{
+  border: 2px solid rgb(216, 214, 214);
+  padding: 2px;
+}

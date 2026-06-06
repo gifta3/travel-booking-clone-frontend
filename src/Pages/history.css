@@ -1,0 +1,104 @@
+.timeline-container {
+  padding: 20px;
+}
+
+.timeline {
+  position: relative;
+  margin-left: 20px;
+  border-left: 2px solid #ddd;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 25px;
+  padding-left: 20px;
+}
+
+.dot {
+  position: absolute;
+  left: -9px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: gray;
+}
+
+/* Status colors */
+.dot.success {
+  background: green;
+}
+
+.dot.warning {
+  background: orange;
+}
+
+.dot.error {
+  background: red;
+}
+
+.content h4 {
+  margin: 0;
+  font-size: 16px;
+}
+.content p {
+  margin: 5px 0 0;
+  color: gray;
+  font-size: 12px;
+}
+.banner-carousel {
+  width: 100%;
+  max-width: 1200px;
+  height: 22vh;
+  min-height: 120px;
+  max-height: 220px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.banner-carousel .carousel,
+.banner-carousel .carousel-inner,
+.banner-carousel .carousel-item {
+  width: 100%;
+  height: 100%;
+}
+.banner-carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.parent{
+  border: 2px solid rgb(216, 214, 214);
+  padding: 10px;
+  margin: 10px;
+}
+/* Tablet */
+@media (max-width: 768px) {
+  .banner-carousel {
+    height: 18vh;
+    min-height: 100px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .banner-carousel {
+    height: 15vh;
+    min-height: 90px;
+    border-radius: 8px;
+  }
+}
+.footer{
+ display: flex;  
+ background-color: darksalmon; 
+ justify-content: space-around;
+    font-size: 20px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-style: bold;
+    padding: 15px;
+    border-radius: 20px;
+}
+.nav-link{
+color: black;
+}
