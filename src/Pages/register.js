@@ -4,9 +4,9 @@ import {toast} from 'react-toastify';
 import{Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './register.css';
-import axios from 'axios';
+
 function Register (){
-    const[user,setUser]=useState({name:'',email:'',password:'',username:''});
+    const[user,setUser]=useState({Name:'',Email:'',Password:'',Username:''});
     const navigate=useNavigate();
 const handleChange=(e)=>{  
 const {name,value}=e.target;
@@ -18,21 +18,22 @@ setUser((prev)=>({
 const handlesubmit=async(e)=>{
     e.preventDefault();
 try{
-   const response= await axios('https://travel-booking-clone-backend.onrender.com/register',{
+   const response= await fetch('https://travel-booking-clone-backend.onrender.com/api/user/register',{
     method:'POST',
     headers:{
         'Content-Type':'application/json'
     },
     body:JSON.stringify(user)
-   });
+   }
+);
    const data=await response.json();
 console.log(data);
 toast.success('Registered Successfully');
 setUser({
-    name:'',
-    email:'',
-    username:'',
-    password:'',
+    Name:'',
+    Email:'',
+    Username:'',
+    Password:'',
 });
 navigate('./login')
 }catch(err){
@@ -48,13 +49,13 @@ return(
 </div>
 <div  className='register-form'>
 <h4>Sign up</h4>
-<input type='text' name='name' placeholder="Name" value={user.name}  onChange={handleChange} />
+<input type='text' name='Name' placeholder="Name" value={user.Name}  onChange={handleChange} />
 <br/>
-<input type='email' name='email' placeholder="Email" value={user.email} onChange={handleChange} />
+<input type='email' name='Email' placeholder="Email" value={user.Email} onChange={handleChange} />
 <br/>
-<input type='text' name='username' placeholder="username" value={user.username} onChange={handleChange}/>
+<input type='text' name='Username' placeholder="username" value={user.Username} onChange={handleChange}/>
 <br/>
-<input type='password' name='password' placeholder="password" value={user.password} onChange={handleChange} />
+<input type='password' name='Password' placeholder="password" value={user.Password} onChange={handleChange} />
 <br></br>
 <button className='btn btn-dark'>Register</button>
 <br></br>

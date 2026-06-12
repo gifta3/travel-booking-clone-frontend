@@ -3,10 +3,9 @@ import msg from './msg.jfif';
 import {toast} from 'react-toastify';
 import {useState} from'react';
 import { useNavigate} from 'react-router-dom';
-import axios from 'axios';
 
 function Login(){
- const[user,setUser]=useState({username:'',password:''});
+ const[user,setUser]=useState({Email:'',Password:''});
      const navigate=useNavigate();
 const handleChange=(e)=>{  
 const {name,value}=e.target;
@@ -16,9 +15,9 @@ setUser((prev)=>({
 }));
 };
 const handlesubmit=async(e)=>{
-        e.preventDefault();
+        //.preventDefault();
 //user list
-const response = await axios('https://travel-booking-clone-backend.onrender.com/login', {
+const response = await fetch('https://travel-booking-clone-backend.onrender.com/api/user/login', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -30,7 +29,7 @@ const data = await response.json();
 
 if (response.ok) {
   toast.success('Login successfully');
-  setUser({ username: '', password: '' });
+  setUser({ Email: '', Password: '' });
   navigate('/home');
 } else {
   toast.error(data.message || 'Invalid credentials');
@@ -43,9 +42,9 @@ if (response.ok) {
 </div>
 <div  className='flu' style={{width:'80%'}}>
 <h4>Log in</h4>
-<input type='text' name='username' value={user.username} onChange={handleChange} placeholder="Username" style={{marginTop:'12px',width:'368px',padding:'4px'}}/>
+<input type='email' name='Email' value={user.Email} onChange={handleChange} placeholder="Email" style={{marginTop:'12px',width:'368px',padding:'4px'}}/>
 <br/>
-<input type='password' name='password' placeholder="password" value={user.password} onChange={handleChange}style={{marginTop:'12px',width:'368px',padding:'4px'}}/>
+<input type='password' name='Password' placeholder="Password" value={user.Password} onChange={handleChange}style={{marginTop:'12px',width:'368px',padding:'4px'}}/>
 <br/>
 <button className='btn btn-dark'style={{marginTop:'20px'}} onClick={handlesubmit}>Login</button>
 <br/>
