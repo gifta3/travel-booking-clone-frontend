@@ -16,10 +16,10 @@ function Home() {
      const file= e.target.files[0];
      const formData=new FormData();
      formData.append('document',file);
-     await axios('https://travel-booking-clone-backend.onrender.com/api/upload',{
-      method:'POST',
-      body:formData,
-     });
+     await axios.post('https://travel-booking-clone-backend.onrender.com/api/upload',formData
+      //method:'POST',
+      //body:formData,
+     );
     };
     return(
 <div className='coverpage'>
