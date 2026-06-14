@@ -2,6 +2,7 @@ import {useRef} from 'react';
 import banner from './banner.jpeg';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import {toast} from 'react-toastify';
 import './home.css';
 import dragdrop from './dragdrop.png';
 
@@ -13,17 +14,19 @@ function Home() {
     };
     //file upload
     const handleFile=async(e)=>{
+    try{  
      const file= e.target.files[0];
      const formData=new FormData();
-     formData.append('document',file);
+     formData.append('file',file);
      await axios.post('https://travel-booking-clone-backend.onrender.com/api/upload',formData
-      //method:'POST',
-      //body:formData,
      );
+     toast.success('Uploaded! genarating your itinerary...');
+    }catch(error){
+    toast.error('Upload failed');
+}
     };
     return(
 <div className='coverpage'>
-
 <div className="banner">
 <img src={banner} alt='banner'/>
 </div>

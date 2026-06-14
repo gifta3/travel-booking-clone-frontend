@@ -8,19 +8,27 @@ import{useEffect,useState} from 'react';
 function History(){
   const [history,setHistory]=useState([]);
   //get history
-useEffect(()=>{
-const token=localStorage.getItem('token');
- axios('https://travel-booking-clone-backend.onrender.com/api/history',{
-    method:'GET',
-    headers:{
-      Authorization:`Bearer ${token} `, 
-        'Content-Type':'application/json',
-    },
-   })
-   .then((response)=> response.json())
-      .then((data)=> setHistory(data))
-   .catch((err)=> console.log(err));
-},[]);
+useEffect(() => {
+  const fetchHistory = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get(
+        "https://travel-booking-clone-backend.onrender.com/api/history",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response.data);
+      setHistory(response.data);
+    } catch (error) {
+      console.error("History fetch error:", error);
+    }
+  };
+  fetchHistory();
+}, []);
+console.log(history);
     return(
       <div className='parent'>
             <div className='banner-carousel'>
@@ -66,7 +74,7 @@ const token=localStorage.getItem('token');
             <div className="content">
               <h4>{item.Itinerary}</h4>
                 <p>Uploaded file:{item.UploadedFile}</p>
-              <p>{new Date(item.createdAt).localStorage()}</p>
+              <p>{new Date(item.createdAt).toLocaleDateString()}</p>
             </div>
           </div>
         ))}
