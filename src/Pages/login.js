@@ -28,6 +28,7 @@ const response = await fetch('https://travel-booking-clone-backend.onrender.com/
 const data = await response.json();
 
 if (response.ok) {
+  localStorage.setItem('token',data.token);
   toast.success('Login successfully');
   setUser({ Email: '', Password: '' });
   navigate('/home');
