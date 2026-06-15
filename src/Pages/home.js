@@ -13,18 +13,28 @@ function Home() {
       fileRef.current.click();
     };
     //file upload
-    const handleFile=async(e)=>{
-    try{  
-     const file= e.target.files[0];
-     const formData=new FormData();
-     formData.append('file',file);
-     await axios.post('https://travel-booking-clone-backend.onrender.com/api/upload',formData
-     );
-     toast.success('Uploaded! genarating your itinerary...');
-    }catch(error){
+   const handleFile = async (e) => {
+  try {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+    const token = localStorage.getItem('token');
+    await axios.post(
+      'https://travel-booking-clone-backend.onrender.com/api/upload',
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    toast.success('Uploaded! Generating your itinerary...');
+  } catch (error) {
+    console.error(error);
     toast.error('Upload failed');
-}
-    };
+  }
+};
+    //};
     return(
 <div className='coverpage'>
 <div className="banner">
