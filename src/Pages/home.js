@@ -1,13 +1,14 @@
 import {useRef} from 'react';
 import banner from './banner.jpeg';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify';
 import './home.css';
 import dragdrop from './dragdrop.png';
 
 function Home() {
     const fileRef=useRef(null);
+    const navigate=useNavigate();
 //img click
     const handleClick=()=>{
       fileRef.current.click();
@@ -29,12 +30,14 @@ function Home() {
       }
     );
     toast.success('Uploaded! Generating your itinerary...');
+    setTimeout(()=>{
+    navigate('/history');
+    },1500);
   } catch (error) {
     console.error(error);
     toast.error('Upload failed');
   }
 };
-    //};
     return(
 <div className='coverpage'>
 <div className="banner">
